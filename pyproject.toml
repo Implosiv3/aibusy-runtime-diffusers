@@ -1,6 +1,6 @@
 [project]
 name = "aibusy-runtime-diffusers"
-version = "0.0.4"
+version = "0.0.5"
 description = "AI but symple - Diffusers Runtime Module"
 authors = [
     {name = "danialcala94", email = "danielalcalavalera@gmail.com"}
@@ -14,7 +14,8 @@ aibusy = { version = ">=0.0.11,<1.0.0", optional = false }
 # Plugin dependencies
 aibusy-runtime-huggingface = { version = ">=0.0.5,<1.0.0", optional = false }
 # Other dependencies
-diffusers = { version = ">=0.39.0,<1.0.0", optional = false }
+diffusers = { version = ">=0.39.0,<9999.0.0", optional = false }
+transformers = { version = ">=5.13.0,<9999.0.0", optional = false }
 # TODO: Uncomment this for GPU version (~2.5GB)
 torch = { version = "==2.5.1", source = "pytorch", optional = false }
 # torch = { version = ">=2.12.1,<9999.0.0", optional = false }

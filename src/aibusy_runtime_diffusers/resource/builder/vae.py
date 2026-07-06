@@ -11,7 +11,7 @@ class VAEResourceBuilder(
     @property
     def spec_type(
         self,
-    ):
+    ) -> type[VAEResourceSpec]:
         return VAEResourceSpec
 
     async def build(

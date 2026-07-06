@@ -14,11 +14,13 @@ class UNetResource(
     ) -> UNet2DConditionModel:
         torch_dtype = to_torch_dtype(self.dtype)
 
-        return UNet2DConditionModel.from_pretrained(
+        model = UNet2DConditionModel.from_pretrained(
             self.installed_asset.location.path,
             subfolder = 'unet',
             torch_dtype = torch_dtype,
-        ).to(self.torch_device)
+        )
+
+        return self.move_to_device(model)
 
     async def unload(
         self,
@@ -26,4 +28,5 @@ class UNetResource(
     ) -> None:
         del instance
 
-        torch.cuda.empty_cache()
+        if self.device.type == 'cuda':
+            torch.cuda.empty_cache()

@@ -14,11 +14,13 @@ class VAEResource(
     ) -> AutoencoderKL:
         torch_dtype = to_torch_dtype(self.dtype)
 
-        return AutoencoderKL.from_pretrained(
+        model = AutoencoderKL.from_pretrained(
             self.installed_asset.location.path,
             subfolder = 'vae',
             torch_dtype = torch_dtype,
-        ).to(self.torch_device)
+        )
+
+        return self.move_to_device(model)
 
     async def unload(
         self,
@@ -26,4 +28,5 @@ class VAEResource(
     ) -> None:
         del instance
 
-        torch.cuda.empty_cache()
+        if self.device.type == 'cuda':
+            torch.cuda.empty_cache()

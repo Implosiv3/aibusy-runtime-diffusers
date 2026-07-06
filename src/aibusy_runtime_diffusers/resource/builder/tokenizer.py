@@ -1,24 +1,24 @@
+from aibusy_runtime_diffusers.resource.tokenizer import TokenizerResource
+from aibusy_runtime_diffusers.resource.spec.tokenizer import TokenizerResourceSpec
 from aibusy.runtime.resource.builder.abstract import ResourceBuilder
-from aibusy_runtime_diffusers.resource.unet import UNetResource
-from aibusy_runtime_diffusers.resource.spec.unet import UNetResourceSpec
 from aibusy.engine.execution.context import ExecutionContext
 
 
-class UNetResourceBuilder(
-    ResourceBuilder
+class TokenizerResourceBuilder(
+    ResourceBuilder,
 ):
 
     @property
     def spec_type(
         self,
-    ) -> type[UNetResourceSpec]:
-        return UNetResourceSpec
+    ) -> type[TokenizerResourceSpec]:
+        return TokenizerResourceSpec
 
     async def build(
         self,
-        spec: UNetResourceSpec,
+        spec: TokenizerResourceSpec,
         context: ExecutionContext,
-    ) -> UNetResource:
+    ) -> TokenizerResource:
         destination_path = spec.asset.get_install_path(
             context.settings.models_directory
         )
@@ -28,8 +28,6 @@ class UNetResourceBuilder(
             destination_path = destination_path
         )
 
-        return UNetResource(
-            installed_asset = installed_asset,
-            device = spec.device,
-            dtype = spec.dtype,
+        return TokenizerResource(
+            installed_asset = installed_asset
         )

@@ -1,14 +1,13 @@
+from aibusy_runtime_diffusers.resource.diffusers import _DiffusersResource
 from aibusy_runtime_diffusers.utils.torch_dtype import to_torch_dtype
-from aibusy.runtime.resource.abstract import Resource
 from aibusy.engine.execution.asset.installed import InstalledAsset
 from aibusy.runtime.device import Device
 from aibusy.runtime.dtype import DType
 from abc import ABC
-from pathlib import Path
 
 
 class _DiffusersModelResource(
-    Resource,
+    _DiffusersResource,
     ABC,
 ):
     """
@@ -44,22 +43,14 @@ class _DiffusersModelResource(
         self.device = device
         self.dtype = dtype
 
-    @property
-    def model_directory(
+    def move_to_device(
         self,
-    ) -> Path:
+        model,
+    ):
         """
-        Root directory of the installed checkpoint.
+        Move the `model` to the `torch_device` by using
+        a `model.to(self.torch_device)`.
         """
-        return Path(
-            self.installed_asset.location.path
-        )
+        model.to(self.torch_device)
 
-    def subdirectory(
-        self,
-        name: str,
-    ) -> Path:
-        """
-        Returns a subdirectory inside the checkpoint.
-        """
-        return self.model_directory / name
+        return model

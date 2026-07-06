@@ -1,24 +1,24 @@
+from aibusy_runtime_diffusers.resource.text_encoder import TextEncoderResource
+from aibusy_runtime_diffusers.resource.spec.text_encoder import TextEncoderResourceSpec
 from aibusy.runtime.resource.builder.abstract import ResourceBuilder
-from aibusy_runtime_diffusers.resource.unet import UNetResource
-from aibusy_runtime_diffusers.resource.spec.unet import UNetResourceSpec
 from aibusy.engine.execution.context import ExecutionContext
 
 
-class UNetResourceBuilder(
-    ResourceBuilder
+class TextEncoderResourceBuilder(
+    ResourceBuilder,
 ):
 
     @property
     def spec_type(
         self,
-    ) -> type[UNetResourceSpec]:
-        return UNetResourceSpec
+    ) -> type[TextEncoderResourceSpec]:
+        return TextEncoderResourceSpec
 
     async def build(
         self,
-        spec: UNetResourceSpec,
+        spec: TextEncoderResourceSpec,
         context: ExecutionContext,
-    ) -> UNetResource:
+    ) -> TextEncoderResource:
         destination_path = spec.asset.get_install_path(
             context.settings.models_directory
         )
@@ -28,7 +28,7 @@ class UNetResourceBuilder(
             destination_path = destination_path
         )
 
-        return UNetResource(
+        return TextEncoderResource(
             installed_asset = installed_asset,
             device = spec.device,
             dtype = spec.dtype,
