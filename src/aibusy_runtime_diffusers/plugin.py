@@ -1,4 +1,4 @@
-from aibusy_runtime_diffusers.asset.installer.diffusers_model_asset_installer import DiffusersModelAssetInstaller
+from aibusy_runtime_diffusers.asset.installer.checkpoint import DiffusersCheckpointAssetInstaller
 from aibusy_runtime_huggingface.plugin import HuggingfaceRuntimePlugin
 from aibusy.service.huggingface.abstract import HuggingfaceClient
 from aibusy.engine.plugin.abstract import Plugin
@@ -18,10 +18,11 @@ class DiffusersRuntimePlugin(
         )
     
     def register(
+        self,
         builder: EngineBuilder
     ):
-        builder._assets_installers.register(
-            DiffusersModelAssetInstaller(
+        builder.assets_installers.register(
+            DiffusersCheckpointAssetInstaller(
                 builder.services.get(
                     HuggingfaceClient
                 )

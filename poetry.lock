@@ -2,30 +2,30 @@
 
 [[package]]
 name = "aibusy"
-version = "0.0.5"
+version = "0.0.7"
 description = "AI but symple - Base Module"
 optional = false
 python-versions = "<3.12,>=3.10"
 groups = ["main"]
 files = [
-    {file = "aibusy-0.0.5-py3-none-any.whl", hash = "sha256:bade0f9e6142e3b9afac6a41bd6ef739373b230f5618355baf532c676aa6d4bf"},
-    {file = "aibusy-0.0.5.tar.gz", hash = "sha256:c5c36919ef8f796ec5f92a5da64103f5722c1519b21eea084e77a2f41b1f8654"},
+    {file = "aibusy-0.0.7-py3-none-any.whl", hash = "sha256:7557a57474b7ec4d43b984ae3f1e316ef84c369e8ac2e7448f2ed4b690f6f707"},
+    {file = "aibusy-0.0.7.tar.gz", hash = "sha256:aeeaab209da978ab84edd2fae7460090759cbf6be067a36e95f44bc242bf3974"},
 ]
 
 [[package]]
 name = "aibusy-runtime-huggingface"
-version = "0.0.1"
+version = "0.0.4"
 description = "AI but symple - Huggingface Runtime Module"
 optional = false
 python-versions = "<3.12,>=3.10"
 groups = ["main"]
 files = [
-    {file = "aibusy_runtime_huggingface-0.0.1-py3-none-any.whl", hash = "sha256:015a3ade56578ca798b55edc3460492c98a0a9334adb665aae8c8b71fa6377bd"},
-    {file = "aibusy_runtime_huggingface-0.0.1.tar.gz", hash = "sha256:dbb363cb22f65a971bf00bc4d89a379822575a04de446b99801abe4293e1a898"},
+    {file = "aibusy_runtime_huggingface-0.0.4-py3-none-any.whl", hash = "sha256:db6cb13ad36e96713d12d40394f04e45b76d8981a5d3f42b7ee896e54aa27ae5"},
+    {file = "aibusy_runtime_huggingface-0.0.4.tar.gz", hash = "sha256:f5688529204a6c8d9d203494b09131a9ee1d885f0dc7f889c3739573b06bf0af"},
 ]
 
 [package.dependencies]
-aibusy = ">=0.0.5,<1.0.0"
+aibusy = ">=0.0.7,<1.0.0"
 huggingface-hub = ">=1.21.0,<9999.0.0"
 
 [[package]]
@@ -47,6 +47,19 @@ typing_extensions = {version = ">=4.5", markers = "python_version < \"3.13\""}
 
 [package.extras]
 trio = ["trio (>=0.32.0)"]
+
+[[package]]
+name = "backports-asyncio-runner"
+version = "1.2.0"
+description = "Backport of asyncio.Runner, a context manager that controls event loop life cycle."
+optional = false
+python-versions = "<3.11,>=3.8"
+groups = ["dev"]
+markers = "python_version == \"3.10\""
+files = [
+    {file = "backports_asyncio_runner-1.2.0-py3-none-any.whl", hash = "sha256:0da0a936a8aeb554eccb426dc55af3ba63bcdc69fa1a600b5bb305413a4477b5"},
+    {file = "backports_asyncio_runner-1.2.0.tar.gz", hash = "sha256:a5aa7b2b7d8f8bfcaa2b57313f70792df84e32a2a746f585213373f900b42162"},
+]
 
 [[package]]
 name = "certifi"
@@ -759,6 +772,27 @@ tomli = {version = ">=1", markers = "python_version < \"3.11\""}
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "pytest-asyncio"
+version = "1.4.0"
+description = "Pytest support for asyncio"
+optional = false
+python-versions = ">=3.10"
+groups = ["dev"]
+files = [
+    {file = "pytest_asyncio-1.4.0-py3-none-any.whl", hash = "sha256:933ca923a23075a87fb7070c0ec272a6848489824d887c85c812670932835aa1"},
+    {file = "pytest_asyncio-1.4.0.tar.gz", hash = "sha256:c6c0d2259945122819f171a32ecea2c349ead889ee28176caaf492143424be42"},
+]
+
+[package.dependencies]
+backports-asyncio-runner = {version = ">=1.1,<2", markers = "python_version < \"3.11\""}
+pytest = ">=8.4,<10"
+typing-extensions = {version = ">=4.12", markers = "python_version < \"3.13\""}
+
+[package.extras]
+docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1)", "sphinx-tabs (>=3.5)"]
+testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)"]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.3"
 description = "YAML parser and emitter for Python"
@@ -1119,7 +1153,6 @@ files = [
     {file = "typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"},
     {file = "typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"},
 ]
-markers = {dev = "python_version == \"3.10\""}
 
 [[package]]
 name = "urllib3"
@@ -1162,4 +1195,4 @@ type = ["pytest-mypy (>=1.0.1) ; platform_python_implementation != \"PyPy\""]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "9b01d66706ae1f08d0bb01b68f1557bf9789980e064aa0784c74dc8f1bc50a07"
+content-hash = "b18d83f485208b41dacc776169a3cb2da4059a8946887fa95018a1978ba419a7"

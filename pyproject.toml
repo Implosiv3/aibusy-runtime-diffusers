@@ -1,6 +1,6 @@
 [project]
 name = "aibusy-runtime-diffusers"
-version = "0.0.1"
+version = "0.0.2"
 description = "AI but symple - Diffusers Runtime Module"
 authors = [
     {name = "danialcala94", email = "danielalcalavalera@gmail.com"}
@@ -10,10 +10,10 @@ requires-python = ">=3.10,<3.12"
 
 [tool.poetry.dependencies]
 # Mandatory
-aibusy = { version = ">=0.0.5,<1.0.0", optional = false }
+aibusy = { version = ">=0.0.7,<1.0.0", optional = false }
 diffusers = { version = ">=0.39.0,<1.0.0", optional = false }
 # Plugin dependencies
-aibusy-runtime-huggingface = { version = ">=0.0.1,<1.0.0", optional = false }
+aibusy-runtime-huggingface = { version = ">=0.0.4,<1.0.0", optional = false }
 # Optional
 
 [tool.poetry]
@@ -21,6 +21,7 @@ packages = [{include = "aibusy_runtime_diffusers", from = "src"}]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
+pytest-asyncio = ">=0.0.1"
 
 [tool.pytest.ini_options]
 markers = [
