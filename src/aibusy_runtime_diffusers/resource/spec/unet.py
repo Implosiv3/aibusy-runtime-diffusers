@@ -1,7 +1,7 @@
+from aibusy_runtime_diffusers.asset.spec.diffusers_checkpoint import DiffusersCheckpointAssetSpec
 from aibusy.runtime.resource.spec.abstract import ResourceSpec
-from aibusy.engine.execution.asset.installed import InstalledAsset
 from aibusy.runtime.device import Device
-from aibusy.runtime.torch_dtype import TorchDType
+from aibusy.runtime.dtype import DType
 from dataclasses import dataclass
 
 
@@ -10,6 +10,6 @@ class UNetResourceSpec(
     ResourceSpec
 ):
 
-    asset: InstalledAsset
+    asset: DiffusersCheckpointAssetSpec
     device: Device
-    dtype: TorchDType
+    dtype: DType

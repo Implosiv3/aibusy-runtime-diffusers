@@ -14,6 +14,40 @@ class DiffusersCheckpointAssetSpec(
     variant: Union[str, None] = None
 
     @property
+    def allow_patterns(
+        self,
+    ):
+        return [
+            'model_index.json',
+
+            'scheduler/**',
+
+            'tokenizer/**',
+            'tokenizer_2/**',
+
+            'text_encoder/**',
+            'text_encoder_2/**',
+
+            'unet/**',
+
+            'vae/**',
+
+            '*.json',
+            '*.txt',
+            '*.model',
+            '*.safetensors',
+        ]
+    
+    @property
+    def ignore_patterns(
+        self,
+    ):
+        return [
+            '*.bin',
+            '*non_ema*',
+        ]
+
+    @property
     def organization(
         self
     ):
@@ -27,21 +61,20 @@ class DiffusersCheckpointAssetSpec(
     
     def get_install_path(
         self,
-        models_root: Path,
+        root_path: Path,
     ) -> Path:
         """
         Get the path where the diffusers checkpoint files
         must be downloaded.
         """
-        organization, model_name = self.repository.split('/', 1)
         revision = (
             self.revision or
             'main'
         )
 
         return (
-            models_root
-            / organization
-            / model_name
+            Path(root_path)
+            / self.organization
+            / self.model_name
             / revision
         )

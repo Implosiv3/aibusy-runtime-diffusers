@@ -1,4 +1,4 @@
-from aibusy_runtime_diffusers.asset.spec.checkpoint import DiffusersCheckpointAssetSpec
+from aibusy_runtime_diffusers.asset.spec.diffusers_checkpoint import DiffusersCheckpointAssetSpec
 from aibusy.engine.execution.asset.installer.abstract import AssetInstaller
 from aibusy.engine.execution.asset.installed import InstalledAsset
 from aibusy.engine.execution.asset.location import AssetLocation
@@ -21,15 +21,14 @@ class DiffusersCheckpointAssetInstaller(
     async def install(
         self,
         spec: DiffusersCheckpointAssetSpec,
+        install_path: str
     ) -> InstalledAsset:
-        # TODO: I need to receive the 'MODELS_DIRECTORY'
-        # del EngineSettings...
-        path = spec.get_install_path(Path('C:/Users/dania/.aibusy/models'))
-        
         directory = await self._huggingface.download_snapshot(
             repository = spec.repository,
             revision = spec.revision,
-            local_dir = path
+            local_dir = install_path,
+            allow_patterns = spec.allow_patterns,
+            ignore_patterns = spec.ignore_patterns
         )
 
         return InstalledAsset(
