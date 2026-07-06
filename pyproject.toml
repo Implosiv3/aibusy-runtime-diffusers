@@ -1,6 +1,6 @@
 [project]
 name = "aibusy-runtime-diffusers"
-version = "0.0.3"
+version = "0.0.4"
 description = "AI but symple - Diffusers Runtime Module"
 authors = [
     {name = "danialcala94", email = "danielalcalavalera@gmail.com"}

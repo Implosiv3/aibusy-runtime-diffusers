@@ -1,28 +1,28 @@
 from aibusy_runtime_diffusers.utils.torch_dtype import to_torch_dtype
 from aibusy_runtime_diffusers.resource.diffusers_model import _DiffusersModelResource
-from diffusers import UNet2DConditionModel
+from diffusers import AutoencoderKL
 
 import torch
 
 
-class UNetResource(
+class VAEResource(
     _DiffusersModelResource
 ):
 
     async def load(
         self,
-    ) -> UNet2DConditionModel:
+    ) -> AutoencoderKL:
         torch_dtype = to_torch_dtype(self.dtype)
 
-        return UNet2DConditionModel.from_pretrained(
+        return AutoencoderKL.from_pretrained(
             self.installed_asset.location.path,
-            subfolder = 'unet',
+            subfolder = 'vae',
             torch_dtype = torch_dtype,
         ).to(self.torch_device)
 
     async def unload(
         self,
-        instance: UNet2DConditionModel,
+        instance: _DiffusersModelResource,
     ) -> None:
         del instance
 

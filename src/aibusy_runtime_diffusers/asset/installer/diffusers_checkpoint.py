@@ -3,7 +3,6 @@ from aibusy.engine.execution.asset.installer.abstract import AssetInstaller
 from aibusy.engine.execution.asset.installed import InstalledAsset
 from aibusy.engine.execution.asset.location import AssetLocation
 from aibusy.service.huggingface.abstract import HuggingfaceClient
-from pathlib import Path
 
 
 class DiffusersCheckpointAssetInstaller(
