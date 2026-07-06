@@ -1,6 +1,6 @@
 [project]
 name = "aibusy-runtime-diffusers"
-version = "0.0.5"
+version = "0.0.6"
 description = "AI but symple - Diffusers Runtime Module"
 authors = [
     {name = "danialcala94", email = "danielalcalavalera@gmail.com"}
@@ -10,12 +10,14 @@ requires-python = ">=3.10,<3.12"
 
 [tool.poetry.dependencies]
 # Mandatory
-aibusy = { version = ">=0.0.11,<1.0.0", optional = false }
+aibusy = { version = ">=0.0.12,<1.0.0", optional = false }
 # Plugin dependencies
 aibusy-runtime-huggingface = { version = ">=0.0.5,<1.0.0", optional = false }
 # Other dependencies
 diffusers = { version = ">=0.39.0,<9999.0.0", optional = false }
 transformers = { version = ">=5.13.0,<9999.0.0", optional = false }
+# I don't know why 3.4.8 is failing
+charset-normalizer = { version = "==3.4.7", optional = false }
 # TODO: Uncomment this for GPU version (~2.5GB)
 torch = { version = "==2.5.1", source = "pytorch", optional = false }
 # torch = { version = ">=2.12.1,<9999.0.0", optional = false }

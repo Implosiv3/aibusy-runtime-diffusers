@@ -35,14 +35,14 @@ testing = ["bitsandbytes", "datasets", "diffusers", "evaluate", "parameterized",
 
 [[package]]
 name = "aibusy"
-version = "0.0.11"
+version = "0.0.12"
 description = "AI but symple - Base Module"
 optional = false
 python-versions = "<3.12,>=3.10"
 groups = ["main"]
 files = [
-    {file = "aibusy-0.0.11-py3-none-any.whl", hash = "sha256:5521ed9c2f1b828c4e1315915f8a054f04c1186dc45f7d401af4a9969dcdfede"},
-    {file = "aibusy-0.0.11.tar.gz", hash = "sha256:560884c10a7d85bab83e9aab6a2b662556546fe6ba364e1c811db9e36c93d844"},
+    {file = "aibusy-0.0.12-py3-none-any.whl", hash = "sha256:52dd2aba77e98fef9294e93955112f7dcc9c23ed1499bc6de8d0581c285b036b"},
+    {file = "aibusy-0.0.12.tar.gz", hash = "sha256:a252c36114dd5092b62440cd200b017a9f92a0a51522a8aaac012424f90bcb6e"},
 ]
 
 [[package]]
@@ -1868,4 +1868,4 @@ type = ["pytest-mypy (>=1.0.1) ; platform_python_implementation != \"PyPy\""]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "78189443375b1aaac2c930343882768dd6086740ced0969a7f6ad16b103ec53e"
+content-hash = "7c681bf6ce841f79924dd29bcb3106f96a48d3051da2fc5b2afd8d1f85efcb1e"

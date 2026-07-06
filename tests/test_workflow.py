@@ -46,11 +46,14 @@ async def test_resource_builder():
     from aibusy_runtime_diffusers.resource.spec.vae import VAEResourceSpec
     from aibusy_runtime_diffusers.resource.spec.text_encoder import TextEncoderResourceSpec
     from aibusy_runtime_diffusers.resource.spec.tokenizer import TokenizerResourceSpec
+    from aibusy_runtime_diffusers.resource.spec.scheduler import SchedulerResourceSpec
     from aibusy_runtime_diffusers.resource.builder.unet import UNetResourceBuilder
     from aibusy_runtime_diffusers.resource.builder.vae import VAEResourceBuilder
     from aibusy_runtime_diffusers.resource.builder.text_encoder import TextEncoderResourceBuilder
     from aibusy_runtime_diffusers.resource.builder.tokenizer import TokenizerResourceBuilder
+    from aibusy_runtime_diffusers.resource.builder.scheduler import SchedulerResourceBuilder
     from aibusy_runtime_diffusers.asset.spec.diffusers_checkpoint import DiffusersCheckpointAssetSpec
+    from aibusy_runtime_diffusers.scheduler.euler import EulerScheduler
     from aibusy_runtime_diffusers.plugin import DiffusersRuntimePlugin
     from aibusy.engine.execution.context import ExecutionContext
     from aibusy.engine.cache.memory_cache import MemoryCache
@@ -141,6 +144,23 @@ async def test_resource_builder():
 
     assert resource.installed_asset.location.uri == 'file:///C:/Users/dania/.aibusy/models/runwayml/stable-diffusion-v1-5/main'
 
+    # Test Scheduler
+    scheduler_spec = SchedulerResourceSpec(
+        asset = DiffusersCheckpointAssetSpec(
+            repository = 'runwayml/stable-diffusion-v1-5'
+        ),
+        scheduler = EulerScheduler
+    )
+
+    builder = SchedulerResourceBuilder()
+
+    resource = await builder.build(
+        scheduler_spec,
+        execution_context,
+    )
+
+    assert resource.installed_asset.location.uri == 'file:///C:/Users/dania/.aibusy/models/runwayml/stable-diffusion-v1-5/main'
+
 
 @pytest.mark.mandatory
 @pytest.mark.asyncio
@@ -149,6 +169,8 @@ async def test_execution_resource_manager():
     from aibusy_runtime_diffusers.resource.spec.vae import VAEResourceSpec
     from aibusy_runtime_diffusers.resource.spec.text_encoder import TextEncoderResourceSpec
     from aibusy_runtime_diffusers.resource.spec.tokenizer import TokenizerResourceSpec
+    from aibusy_runtime_diffusers.resource.spec.scheduler import SchedulerResourceSpec
+    from aibusy_runtime_diffusers.scheduler.euler import EulerScheduler
     from aibusy_runtime_diffusers.asset.spec.diffusers_checkpoint import DiffusersCheckpointAssetSpec
     from aibusy_runtime_diffusers.plugin import DiffusersRuntimePlugin
     from aibusy.engine.execution.context import ExecutionContext
@@ -156,7 +178,7 @@ async def test_execution_resource_manager():
     from aibusy.engine.builder import EngineBuilder
     from aibusy.runtime.device import CUDA
     from aibusy.runtime.dtype import FLOAT32
-    from diffusers import UNet2DConditionModel, AutoencoderKL
+    from diffusers import UNet2DConditionModel, AutoencoderKL, EulerDiscreteScheduler
     from transformers import CLIPTextModel, CLIPTokenizer
 
     engine = (
@@ -221,3 +243,15 @@ async def test_execution_resource_manager():
     resource = await execution_context.resources.resolve(tokenizer_spec)
 
     assert isinstance(resource, CLIPTokenizer)
+
+    # Test Scheduler
+    scheduler_spec = SchedulerResourceSpec(
+        asset = DiffusersCheckpointAssetSpec(
+            repository = 'runwayml/stable-diffusion-v1-5'
+        ),
+        scheduler = EulerScheduler
+    )
+
+    resource = await execution_context.resources.resolve(scheduler_spec)
+
+    assert isinstance(resource, EulerDiscreteScheduler)

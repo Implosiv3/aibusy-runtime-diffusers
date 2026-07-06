@@ -3,6 +3,7 @@ from aibusy_runtime_diffusers.resource.builder.unet import UNetResourceBuilder
 from aibusy_runtime_diffusers.resource.builder.vae import VAEResourceBuilder
 from aibusy_runtime_diffusers.resource.builder.text_encoder import TextEncoderResourceBuilder
 from aibusy_runtime_diffusers.resource.builder.tokenizer import TokenizerResourceBuilder
+from aibusy_runtime_diffusers.resource.builder.scheduler import SchedulerResourceBuilder
 from aibusy_runtime_huggingface.plugin import HuggingfaceRuntimePlugin
 from aibusy.service.huggingface.abstract import HuggingfaceClient
 from aibusy.engine.plugin.abstract import Plugin
@@ -47,4 +48,8 @@ class DiffusersRuntimePlugin(
 
         builder.resources_builders.register(
             TokenizerResourceBuilder()
+        )
+
+        builder.resources_builders.register(
+            SchedulerResourceBuilder()
         )
