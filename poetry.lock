@@ -35,14 +35,14 @@ testing = ["bitsandbytes", "datasets", "diffusers", "evaluate", "parameterized",
 
 [[package]]
 name = "aibusy"
-version = "0.0.12"
+version = "0.0.19"
 description = "AI but symple - Base Module"
 optional = false
 python-versions = "<3.12,>=3.10"
 groups = ["main"]
 files = [
-    {file = "aibusy-0.0.12-py3-none-any.whl", hash = "sha256:52dd2aba77e98fef9294e93955112f7dcc9c23ed1499bc6de8d0581c285b036b"},
-    {file = "aibusy-0.0.12.tar.gz", hash = "sha256:a252c36114dd5092b62440cd200b017a9f92a0a51522a8aaac012424f90bcb6e"},
+    {file = "aibusy-0.0.19-py3-none-any.whl", hash = "sha256:70ed4c505707a3473ef12da98c24ea26d591d7bc6ccd5d1a708acb59bb259cc3"},
+    {file = "aibusy-0.0.19.tar.gz", hash = "sha256:2ed82d440b6cfd950299248a51e0aff8fa838c2d6a6f22288ee6d7f5ae500974"},
 ]
 
 [[package]]
@@ -344,14 +344,14 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "filelock"
-version = "3.29.5"
+version = "3.29.7"
 description = "A platform independent file lock."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "filelock-3.29.5-py3-none-any.whl", hash = "sha256:8af830889ba3a0ffcefbd6c7d2af8a54012058103771f2e10848222f476a1693"},
-    {file = "filelock-3.29.5.tar.gz", hash = "sha256:6e6034c57a00a020e767f2614a5539863f056de7e7991d6d1473aef7ff73f156"},
+    {file = "filelock-3.29.7-py3-none-any.whl", hash = "sha256:987db6f789a3a2a59f55081801b2b3697cb97e2a736b5f1a9e99b559285fbc51"},
+    {file = "filelock-3.29.7.tar.gz", hash = "sha256:5b481979797ae69e72f0b389d89a80bdd585c260c5b3f1fb9c0a5ba9bb3f195d"},
 ]
 
 [[package]]
@@ -1700,14 +1700,14 @@ reference = "pytorch"
 
 [[package]]
 name = "tqdm"
-version = "4.68.3"
+version = "4.68.4"
 description = "Fast, Extensible Progress Meter"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "tqdm-4.68.3-py3-none-any.whl", hash = "sha256:39832cc2def2789a6f29df83f172db7416cea70052c0907a57801c5f2fdccb03"},
-    {file = "tqdm-4.68.3.tar.gz", hash = "sha256:00dfa48452b6b6cfae3dd9885636c23d3422d1ec97c66d96818cbd5e0821d482"},
+    {file = "tqdm-4.68.4-py3-none-any.whl", hash = "sha256:5168118b2368f48c561afda8020fd79195b1bdb0bdf8086b88442c267a315dc2"},
+    {file = "tqdm-4.68.4.tar.gz", hash = "sha256:19829c9673638f2a0b8617da4cdcb927e831cd88bcfcb6e78d42a4d1af131520"},
 ]
 
 [package.dependencies]
@@ -1868,4 +1868,4 @@ type = ["pytest-mypy (>=1.0.1) ; platform_python_implementation != \"PyPy\""]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "7c681bf6ce841f79924dd29bcb3106f96a48d3051da2fc5b2afd8d1f85efcb1e"
+content-hash = "641dd32e3675257924d16e94daf64ec3cd341f593921785e11f884b04ced1eb1"

@@ -1,18 +1,18 @@
-
-
-
 from aibusy.graph.operation.abstract.atomic_operation import AtomicOperation
 from aibusy.graph.classes.input import Input
 from aibusy.graph.classes.output import Output
 from aibusy.engine.execution.context import ExecutionContext
-from aibusy.graph.data_type.types import PROMPT_EMBEDDINGS
-from aibusy.graph.data_type.types import DataType
+from aibusy.utils.classes.prompt_embeddings import PromptEmbeddings
+from aibusy.graph.data_type.types import CLIP_PROMPT_ENCODER_RESOURCE_REFERENCE, PROMPT, PROMPT_EMBEDDINGS
 
+
+from aibusy.graph.data_type.types import DataType
 
 SHAPE = DataType(
     'SHAPE',
     tuple,
 )
+
 
 class PromptEmbeddingsShape(
     AtomicOperation,
@@ -29,4 +29,3 @@ class PromptEmbeddingsShape(
         return {
             'shape': self.prompt_embeddings.value.shape,
         }
-        

@@ -1,9 +1,9 @@
 from aibusy_runtime_diffusers.asset.installer.diffusers_checkpoint import DiffusersCheckpointAssetInstaller
-from aibusy_runtime_diffusers.resource.builder.unet import UNetResourceBuilder
-from aibusy_runtime_diffusers.resource.builder.vae import VAEResourceBuilder
-from aibusy_runtime_diffusers.resource.builder.text_encoder import TextEncoderResourceBuilder
-from aibusy_runtime_diffusers.resource.builder.tokenizer import TokenizerResourceBuilder
-from aibusy_runtime_diffusers.resource.builder.scheduler import SchedulerResourceBuilder
+from aibusy_runtime_diffusers.resource.builder.unet.diffusers_unet import DiffusersUNetResourceBuilder
+from aibusy_runtime_diffusers.resource.builder.prompt_encoder.clip import CLIPPromptEncoderResourceBuilder
+from aibusy_runtime_diffusers.resource.builder.noise_generator.gaussian import GaussianNoiseGeneratorResourceBuilder
+# from aibusy_runtime_diffusers.resource.builder.scheduler import SchedulerResourceBuilder
+from aibusy_runtime_diffusers.resource.builder.scheduler.euler import EulerSchedulerResourceBuilder
 from aibusy_runtime_huggingface.plugin import HuggingfaceRuntimePlugin
 from aibusy.service.huggingface.abstract import HuggingfaceClient
 from aibusy.engine.plugin.abstract import Plugin
@@ -33,23 +33,23 @@ class DiffusersRuntimePlugin(
                 )
             )
         )
+
+        builder.resources_builders.register(
+            CLIPPromptEncoderResourceBuilder()
+        )
         
         builder.resources_builders.register(
-            UNetResourceBuilder()
+            EulerSchedulerResourceBuilder()
+        )
+
+        # builder.resources_builders.register(
+        #     SchedulerResourceBuilder()
+        # )
+
+        builder.resources_builders.register(
+            GaussianNoiseGeneratorResourceBuilder()
         )
 
         builder.resources_builders.register(
-            VAEResourceBuilder()
-        )
-
-        builder.resources_builders.register(
-            TextEncoderResourceBuilder()
-        )
-
-        builder.resources_builders.register(
-            TokenizerResourceBuilder()
-        )
-
-        builder.resources_builders.register(
-            SchedulerResourceBuilder()
+            DiffusersUNetResourceBuilder()
         )
